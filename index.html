@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looking Glass Hours</title>
+    <style>
+        /* Background Styling */
+        body {
+            background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Typing Effect */
+        #typing-text {
+            font-size: 24px;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            overflow: hidden;
+            width: 0;
+            animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Floating Effect */
+        #container {
+            animation: float 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Clickable Link */
+        #click-link {
+            margin-top: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #click-link:hover {
+            color: #FFD700;
+        }
+
+        /* Fade to Black */
+        .fade-out {
+            animation: fadeOut 1.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="typing-text">Some endings leave pieces behind. When you're ready to gather them, click here.</div>
+        <div id="click-link" onclick="fadeAndRedirect()">Click here</div>
+    </div>
+
+    <script>
+        function fadeAndRedirect() {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = "nextpage.html"; // Replace with the next step URL
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
