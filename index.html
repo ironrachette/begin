@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Looking Glass Hours</title>
     <style>
-        /* Background Styling */
+        /* Background */
         body {
-            background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center fixed;
+            background: url('your-uploaded-image-url') no-repeat center center fixed;
             background-size: cover;
             color: white;
             font-family: 'Arial', sans-serif;
@@ -20,71 +20,68 @@
             overflow: hidden;
         }
 
-        /* Typing Effect */
-        #typing-text {
+        /* Text Container */
+        #text-container {
+            position: absolute;
             font-size: 24px;
-            white-space: nowrap;
-            border-right: 3px solid white;
-            overflow: hidden;
-            width: 0;
-            animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+            opacity: 0;
+            animation: fadeInOut 8s ease-in-out forwards;
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
-
-        /* Floating Effect */
-        #container {
-            animation: float 5s infinite alternate ease-in-out;
-        }
-
-        @keyframes float {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-10px); }
-        }
-
-        /* Clickable Link */
-        #click-link {
-            margin-top: 20px;
-            font-size: 18px;
+        /* CTA Button */
+        #begin-btn {
+            font-size: 28px;
+            font-weight: bold;
             cursor: pointer;
-            text-decoration: underline;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-transform: uppercase;
         }
 
-        #click-link:hover {
-            color: #FFD700;
+        #begin-btn:hover {
+            color: black;
+            background: white;
         }
 
-        /* Fade to Black */
-        .fade-out {
-            animation: fadeOut 1.5s forwards;
+        /* Keyframes */
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="typing-text">Some endings leave pieces behind. When you're ready to gather them, click here.</div>
-        <div id="click-link" onclick="fadeAndRedirect()">Click here</div>
-    </div>
+
+    <!-- Text Animation -->
+    <div id="text-container">Some endings leave pieces behind...</div>
+
+    <!-- CTA Button -->
+    <div id="begin-btn" onclick="startJourney()">Begin</div>
 
     <script>
-        function fadeAndRedirect() {
-            document.body.classList.add('fade-out');
+        // Fade in "Begin" after text animation
+        setTimeout(() => {
+            document.getElementById("begin-btn").style.opacity = "1";
+        }, 8000);
+
+        function startJourney() {
+            document.body.style.opacity = "0";
             setTimeout(() => {
-                window.location.href = "nextpage.html"; // Replace with the next step URL
+                window.location.href = "nextpage.html"; // Replace with actual next page
             }, 1500);
         }
     </script>
+
 </body>
 </html>
